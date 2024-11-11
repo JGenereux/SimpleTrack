@@ -1,6 +1,6 @@
 import express from "express";
 import account from "../Models/account";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 const accountsRouter = express.Router();
