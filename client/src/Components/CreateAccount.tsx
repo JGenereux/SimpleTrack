@@ -1,4 +1,4 @@
-import Navbar from "../Utils/navbar";
+import Navbar from "../Utils/Navbar";
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import STLOGO from "../images/STLogo.png";
@@ -77,7 +77,7 @@ function SignUp() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/accounts/createAccount",
+        "https://simple-track-server-jgenereuxs-projects.vercel.app/accounts/createAccount",
         User
       );
       console.log(res);

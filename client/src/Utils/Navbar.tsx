@@ -3,7 +3,7 @@ import AccountIcon from "../images/AccountIcon.svg";
 import { useState } from "react";
 import { useAuth } from "../Components/Provider/authProvider";
 
-function Navbar() {
+export default function Navbar() {
   const [profileOpen, setProfileOpen] = useState<boolean>(false);
   return (
     <div className="flex bg-blue-300 flex-col md:flex-row items-center min-w-fit min-h-fit md:min-h-12 font-mono z-50 relative">
@@ -60,5 +60,3 @@ function Profile({ setProfileOpen }: ProfileProps) {
     </div>
   );
 }
-
-export default Navbar;

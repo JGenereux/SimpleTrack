@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import Navbar from "../Utils/navbar";
+
 import LandingPage from "../images/LandingPage.jpg";
+import Navbar from "../Utils/Navbar";
 export default function Home() {
   return (
     <div>

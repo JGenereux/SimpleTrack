@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "../../Utils/navbar";
+import Navbar from "../../Utils/Navbar";
 import AddMeal from "./AddMealForm";
 import CalorieChart from "./CalorieChart";
 

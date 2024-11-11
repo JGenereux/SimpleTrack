@@ -21,7 +21,7 @@ export default function ViewMeals({ isAdded, setIsAdded }: AddMealsProps) {
     async function fetchMeals() {
       try {
         const res = await axios.get(
-          `http://localhost:5000/calories/retrieveDaily?userEmail=${auth.userEmail}`
+          `https://simple-track-server-jgenereuxs-projects.vercel.app/retrieveDaily?userEmail=${auth.userEmail}`
         );
         const dMeals: Meal[] = res.data;
         setMeals(dMeals);
@@ -131,7 +131,7 @@ function EditMeal({ index, meals, setMeals, isAdded, setIsAdded }: MealProps) {
 
     try {
       await axios.post(
-        "http://localhost:5000/calories/updateDaily",
+        "https://simple-track-server-jgenereuxs-projects.vercel.app/calories/updateDaily",
         updateMeal
       );
       setIsAdded(!isAdded);
@@ -152,7 +152,7 @@ function EditMeal({ index, meals, setMeals, isAdded, setIsAdded }: MealProps) {
     };
     try {
       const res = await axios.delete(
-        "http://localhost:5000/calories/removeMeal",
+        "https://simple-track-server-jgenereuxs-projects.vercel.app/calories/removeMeal",
         { data: deleteReq }
       );
       setIsAdded(!isAdded);
