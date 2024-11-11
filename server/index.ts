@@ -3,8 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-import caloriesRouter from "./Routes/calories";
-import accountsRouter from "./Routes/accounts";
+import caloriesRouter from "./api/calories";
+import accountsRouter from "./api/accounts";
 dotenv.config();
 
 const app = express();
