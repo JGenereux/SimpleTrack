@@ -1,7 +1,7 @@
 import Navbar from "../Utils/Navbar";
 import { FormEvent, useState } from "react";
 import axios from "axios";
-import STLOGO from "../assets/STLOGO-BmoJpcWF.png";
+import STLOGO from "../images/STLogo.png";
 import ValidateEmail from "../Utils/Functions/emailValidate";
 import ValidatePswd from "../Utils/Functions/pswdValidate";
 
