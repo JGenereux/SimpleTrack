@@ -1,18 +1,18 @@
 {
-  "version": 2,
   "builds": [
     {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "client/dist"
-      }
+      "src": "client/vite.config.ts",
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
     {
+      "src": "/client/src/Utils/Fonts/(.*)",
+      "dest": "/client/src/Utils/Fonts/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/client/dist/$1"
+      "dest": "/client/$1"
     }
   ]
 }
