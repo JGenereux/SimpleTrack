@@ -59,7 +59,7 @@ const LineChart = ({ isAdded }: isAddedProps) => {
     async function loadData() {
       try {
         const response = await axios.get(
-          `hhttps://simple-track-server-jgenereuxs-projects.vercel.app/retrieveWeek?userEmail=${auth.userEmail}`
+          `https://simple-track-server.vercel.app/retrieveWeek?userEmail=${auth.userEmail}`
         ); //route that returns weeklymacros
         const { calories, carbs, protein } = response.data; //destructure each array
         console.log(response.data);

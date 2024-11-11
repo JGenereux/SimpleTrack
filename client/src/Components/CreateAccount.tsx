@@ -77,7 +77,7 @@ function SignUp() {
 
     try {
       const res = await axios.post(
-        "https://simple-track-server-jgenereuxs-projects.vercel.app/accounts/createAccount",
+        "https://simple-track-server.vercel.app/accounts/createAccount",
         User
       );
       console.log(res);

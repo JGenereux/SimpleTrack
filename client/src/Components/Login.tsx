@@ -31,7 +31,7 @@ function LoginForm() {
     }
     try {
       const response = await axios.post(
-        "https://simple-track-server-jgenereuxs-projects.vercel.app/login",
+        "https://simple-track-server.vercel.app/login",
         account
       );
       //api sends a jwt to store locally (for now).
