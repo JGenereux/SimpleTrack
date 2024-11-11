@@ -31,3 +31,5 @@ app.get("", (req, res) => {
 app.listen(PORT, () => {
   console.log("Hello world!");
 });
+
+module.exports = app;
