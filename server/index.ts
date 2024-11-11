@@ -25,9 +25,7 @@ connection.once("open", () => {
 
 app.use("/calories", caloriesRouter);
 app.use("/accounts", accountsRouter);
-app.get("", (req, res) => {
-  res.send("Server is working");
-});
+
 app.listen(PORT, () => {
   console.log("Hello world!");
 });
