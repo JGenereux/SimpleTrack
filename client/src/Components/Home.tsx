@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import LandingPage from "../../dist/assets/LandingPage-D9FbWeAh.jpg";
+import LandingPage from "../images/LandingPage.jpg";
 import Navbar from "../Utils/Navbar";
 export default function Home() {
   return (
