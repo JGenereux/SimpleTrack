@@ -21,7 +21,7 @@ export default function ViewMeals({ isAdded, setIsAdded }: AddMealsProps) {
     async function fetchMeals() {
       try {
         const res = await axios.get(
-          `https://simple-track-server.vercel.app/retrieveDaily?userEmail=${auth.userEmail}`
+          `https://simple-track-server.vercel.app/calories/retrieveDaily?userEmail=${auth.userEmail}`
         );
         const dMeals: Meal[] = res.data;
         setMeals(dMeals);

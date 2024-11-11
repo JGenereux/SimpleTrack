@@ -98,7 +98,7 @@ function AddMealForm({ setIsAdded }: AddMealsProps) {
         protein: protein,
       };
       const addMealResponse = await axios.post(
-        "https://simple-track-server.vercel.app/insertMeal",
+        "https://simple-track-server.vercel.app/calories/insertMeal",
         mealMacros
       );
       //Set isAdded to true to trigger the ViewMeals component to render the new meals array.
