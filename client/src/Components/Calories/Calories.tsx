@@ -1,0 +1,17 @@
+import { useState } from "react";
+import Navbar from "../../Utils/navbar";
+import AddMeal from "./AddMealForm";
+import CalorieChart from "./CalorieChart";
+
+export default function Calories() {
+  const [isAdded, setIsAdded] = useState<boolean>(false);
+  return (
+    <div className="bg-[#161618]">
+      <Navbar />
+      <div className="flex flex-col mt-20 justify-center md:justify-normal">
+        <AddMeal isAdded={isAdded} setIsAdded={setIsAdded} />
+      </div>
+      <CalorieChart isAdded={isAdded} />
+    </div>
+  );
+}

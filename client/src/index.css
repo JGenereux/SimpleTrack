@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: headerFont;
+  src: url("./Utils/Fonts/InterDisplay-SemiBoldItalic.ttf");
+}
+
+@font-face {
+  font-family: buttonFont;
+  src: url("./Utils/Fonts/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: textFont;
+  src: url("./Utils/Fonts/arial_narrow_7.ttf");
+}
