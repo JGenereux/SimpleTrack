@@ -4,15 +4,15 @@
 
 @font-face {
   font-family: headerFont;
-  src: url("./Utils/Fonts/InterDisplay-SemiBoldItalic.ttf");
+  src: url("./../assets/InterDisplay-SemiBoldItalic-C50CZqg2.ttf");
 }
 
 @font-face {
   font-family: buttonFont;
-  src: url("./Utils/Fonts/Poppins-Medium.ttf");
+  src: url("./../assets/Poppins-Medium-Ci_Fy78h.ttf");
 }
 
 @font-face {
   font-family: textFont;
-  src: url("./Utils/Fonts/arial_narrow_7.ttf");
+  src: url("./Utils/Fonts/arial_narrow_7-B7fRSVqS.ttf");
 }

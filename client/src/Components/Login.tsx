@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import STLOGO from "../images/STLOGO.png";
+import STLOGO from "../../dist/assets/STLOGO-BmoJpcWF.png";
 import { useAuth } from "./Provider/authProvider";
 
 export default function Login() {
