@@ -39,7 +39,7 @@ export default function ViewMeals({ isAdded, setIsAdded }: AddMealsProps) {
   }, [auth.userEmail, isAdded, loaded]);
   return (
     <div className="flex flex-col mx-auto md:items-end w-fit md:my-5 mb-7 md:mr-3 shadow-xl">
-      {meals?.map((meal, i) => (
+      {meals?.map((_meal, i) => (
         <Meal
           key={i}
           index={i}
@@ -143,7 +143,7 @@ function EditMeal({ index, meals, setMeals, isAdded, setIsAdded }: MealProps) {
   async function handleDeleteMeal() {
     //logic to update state to reflect deletion
     //creates a new array of the one reflected
-    const modMeals: Meal[] = meals.filter((meals, i) => index != i);
+    const modMeals: Meal[] = meals.filter((_meals, i) => index != i);
     setMeals(modMeals);
 
     const deleteReq = {
@@ -203,4 +203,4 @@ function EditMeal({ index, meals, setMeals, isAdded, setIsAdded }: MealProps) {
   );
 }
 //component to show percentage person is from there goal
-function GoalCompletion() {}
+//function GoalCompletion() {}
