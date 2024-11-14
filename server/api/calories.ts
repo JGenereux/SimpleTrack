@@ -63,6 +63,10 @@ interface macrosForMeal {
   protein: Number;
 }
 
+//Helper function for the totalcalories post route.
+//Takes in the macros for each ingredient and uses each ingredients individual amount to accurately
+//figure out the amount of macros in that individual ingredient.
+//returns an object containing the total calories, protein, and carbs consumed for the meal given.
 function calculateMacros(
   data: Record<string, any>,
   amounts: string[]
@@ -299,6 +303,43 @@ caloriesRouter.delete("/removeMeal", async (req, res) => {
     res.status(200).json("Meal removed");
   } catch (error) {
     res.status(500).json(error);
+  }
+});
+
+//Route to set the users daily calorie goal
+caloriesRouter.post("/setGoal", async (req, res) => {
+  const { userEmail, goal } = req.body;
+  try {
+    //get user from db
+    const user = await dailyMeal.findOne({ userEmail: userEmail });
+
+    if (user == null) {
+      res.status(406).json("User not found");
+      return;
+    }
+    //if the user exists set the current goal for the user
+    user.goal = goal;
+    await user.save();
+    res.status(200).json("Goal set successfully");
+  } catch (error) {
+    res.status(404).json(error);
+  }
+});
+
+//Route to retrieve the users daily calorie goal
+caloriesRouter.get("/getGoal", async (req, res) => {
+  const userEmail = req.query.userEmail;
+  try {
+    const user = await dailyMeal.findOne({ userEmail: userEmail });
+    if (user == null) {
+      res.status(406).json("User not found");
+      return;
+    }
+
+    const usersGoal = user.goal;
+    res.status(200).json(usersGoal);
+  } catch (error) {
+    res.status(404).json(error);
   }
 });
 export default caloriesRouter;
