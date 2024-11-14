@@ -58,10 +58,10 @@ function LoginForm() {
         ></img>
         <p className="md:mb-0 font-headerFont text-3xl">SimpleTrack</p>
       </div>
-      <div className="flex flex-col w-[50%] h-full mr-5 justify-center">
+      <div className="flex flex-col w-[50%] h-full mr-5 justify-center my-5 md:my-0">
         <form className="flex flex-col" onSubmit={(e) => handleLogin(e)}>
           <div className="flex flex-col">
-            <p className="ml-[17%] font-textFont md:text-lg">Email</p>
+            <p className="md:ml-[17%] font-textFont md:text-lg">Email</p>
             <input
               type="text"
               value={account.email}
@@ -71,11 +71,11 @@ function LoginForm() {
                   password: account.password,
                 })
               }
-              className="border-black border-2 rounded-lg h-8 w-2/3 mx-auto pl-2"
+              className="border-black border-2 rounded-lg h-8 min-w-fit md:w-2/3 mx-auto pl-2 pr-2"
             ></input>
           </div>
           <div className="flex flex-col my-5">
-            <p className="ml-[17%] font-textFont md:text-lg">Password</p>
+            <p className="md:ml-[17%] font-textFont md:text-lg">Password</p>
             <input
               type="password"
               autoComplete="on"
@@ -83,12 +83,12 @@ function LoginForm() {
               onChange={(e) =>
                 setAccount({ email: account.email, password: e.target.value })
               }
-              className="border-black border-2 rounded-lg h-8 w-2/3 mx-auto pl-2"
+              className="border-black border-2 rounded-lg h-8 min-w-fit md:w-2/3 mx-auto pl-2 pr-2"
             ></input>
           </div>
           <button
             type="submit"
-            className="mx-auto font-textFont text-base md:text-lg w-[35%] md:h-12 rounded-lg border-black border-2 mb-12 md:mb-0"
+            className="mx-[28%] md:mx-auto font-textFont text-base md:text-lg w-[100px] h-10 md:w-[120px] md:h-12 rounded-lg border-black border-2 mb-12 md:mb-0"
           >
             Login
           </button>
