@@ -49,7 +49,7 @@ function LoginForm() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row w-[60%] min-h-fit md:h-[60%] bg-slate-50 shadow-2xl items-center">
+    <div className="flex flex-col md:flex-row w-[350px] md:w-[600px] min-h-fit md:h-[60%] bg-slate-50 shadow-2xl items-center">
       <div className="flex flex-col w-[50%] min-h-fit md:h-full justify-center items-center">
         <img
           src={STLOGO}
