@@ -21,6 +21,7 @@ const macrosSchema = new mongoose.Schema<macroEntry>({
 const dailyMealSchema = new mongoose.Schema(
   {
     userEmail: { type: String, required: true },
+    goal: { type: String, default: null },
     dailyMacros: { type: [dailyMacrosSchema], required: true },
     weeklyMacros: { type: [macrosSchema], required: true },
   },
