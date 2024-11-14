@@ -2,21 +2,31 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../Provider/authProvider";
 import ViewMeals from "./ViewMeals";
+import CalorieChart from "./CalorieChart";
+import PercentageViewer from "./Percentage";
 
 interface isAddedProps {
   isAdded: boolean;
   setIsAdded: (bool: boolean) => void;
 }
 export default function AddMeal({ isAdded, setIsAdded }: isAddedProps) {
+  const [calorieGoal, setCalorieGoal] = useState<string>("");
+
   return (
-    <div className="flex flex-col md:flex-row shadow-xl rounded-lg  min-w-fit lg:w-[1000px] h-fit md:ml-[5%] my-10 md:my-[2%] bg-white">
+    <div className="flex flex-col md:flex-row shadow-xl rounded-lg  min-w-fit md:w-[400px] lg:w-[1000px] h-fit md:ml-[5%] my-10 md:my-[2%] bg-white">
       <div className="flex flex-col h-full w-full">
-        <div className="h-1/2 md:h-full w-full md:w-full my-8">
-          <AddMealForm setIsAdded={setIsAdded} />
+        <div className="h-1/2 md:h-full w-full md:w-full my-8 md:ml-5 lg:ml-0">
+          <AddMealForm
+            setIsAdded={setIsAdded}
+            calorieGoal={calorieGoal}
+            setCalorieGoal={setCalorieGoal}
+          />
         </div>
       </div>
-      <div className="h-1/2 md:h-full w-full md:w-full bg-transparent">
+      <div className="flex flex-col mr-5 h-1/2 md:h-full w-full md:w-full bg-transparent ">
         <ViewMeals isAdded={isAdded} setIsAdded={setIsAdded} />
+        <PercentageViewer calorieGoal={calorieGoal} />
+        <CalorieChart isAdded={isAdded} />
       </div>
     </div>
   );
@@ -38,9 +48,15 @@ interface fullMacros {
 
 interface AddMealsProps {
   setIsAdded: (added: boolean) => void;
+  calorieGoal: string;
+  setCalorieGoal: (goal: string) => void;
 }
 
-function AddMealForm({ setIsAdded }: AddMealsProps) {
+function AddMealForm({
+  setIsAdded,
+  calorieGoal,
+  setCalorieGoal,
+}: AddMealsProps) {
   const [meal, setMeal] = useState<Meal>({
     mealName: "",
     ingredients: [],
@@ -97,36 +113,106 @@ function AddMealForm({ setIsAdded }: AddMealsProps) {
         carbs: carbs,
         protein: protein,
       };
-      const addMealResponse = await axios.post(
+      await axios.post(
         "https://simple-track-server.vercel.app/calories/insertMeal",
         mealMacros
       );
       //Set isAdded to true to trigger the ViewMeals component to render the new meals array.
       setIsAdded(true);
-      console.log(addMealResponse);
     } catch (error) {
       console.log(error);
     }
   }
 
   return (
-    <form
-      onSubmit={(e) => handleAddMeal(e)}
-      className="flex flex-col items-center"
-    >
-      <div className="flex flex-col md:mb-5">
-        <FormTextInput meal={meal} setMeal={setMeal} />
-        <FormIngredientsInput
-          meal={meal}
-          setMeal={setMeal}
-          setIsAdded={setIsAdded}
-        />
-        <p>{entireMacros?.calories}</p>
-      </div>
-    </form>
+    <div>
+      <Goal calorieGoal={calorieGoal} setCalorieGoal={setCalorieGoal} />
+      <form onSubmit={(e) => handleAddMeal(e)} className="flex flex-col">
+        <div className="flex flex-col md:mb-5">
+          <div className="flex flex-col items-center">
+            <FormTextInput meal={meal} setMeal={setMeal} />
+            <FormIngredientsInput
+              meal={meal}
+              setMeal={setMeal}
+              setIsAdded={setIsAdded}
+            />
+          </div>
+          <p>{entireMacros?.calories}</p>
+        </div>
+      </form>
+    </div>
   );
 }
 
+interface calorieGoalProps {
+  calorieGoal: string;
+  setCalorieGoal: (goal: string) => void;
+}
+function Goal({ calorieGoal, setCalorieGoal }: calorieGoalProps) {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const auth = useAuth();
+
+  //Only mounts on first render in order to fetch the user's calorieGoal if they have one
+  useEffect(() => {
+    async function fetchGoal() {
+      try {
+        const res = await axios.get(
+          `https://simple-track-server.vercel.app/calories/getGoal?userEmail=${auth.userEmail}`
+        );
+        const goal = res.data;
+        if (goal != null) {
+          setCalorieGoal(goal);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchGoal();
+  }, [isOpen, auth.userEmail]);
+
+  async function updateGoal() {
+    try {
+      const updateGoalProps = {
+        userEmail: auth.userEmail,
+        goal: calorieGoal,
+      };
+
+      await axios.post(
+        "https://simple-track-server.vercel.app/calories/setGoal",
+        updateGoalProps
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function handleSetGoalClick() {
+    if (isOpen) {
+      updateGoal();
+    }
+    setIsOpen(!isOpen);
+  }
+  return (
+    <div className="flex flex-row ml-5 mb-2">
+      <button
+        className="shadow-md p-1 bg-green-200 font-textFont"
+        onClick={handleSetGoalClick}
+      >
+        Set Daily Goal
+      </button>
+      {isOpen && (
+        <div className="self-center">
+          <input
+            type="text"
+            value={calorieGoal}
+            onChange={(e) => setCalorieGoal(String(e.target.value))}
+            className="border-black border-2 w-16 pl-1"
+          ></input>
+        </div>
+      )}
+    </div>
+  );
+}
 interface mealInputProps {
   meal: Meal;
   setMeal: React.Dispatch<React.SetStateAction<Meal>>;
@@ -141,13 +227,13 @@ function FormTextInput({ meal, setMeal }: mealInputProps) {
   }, [mealname]);
 
   return (
-    <div className="flex flex-col  items-center">
-      <p className="text-lg md:text-xl font-textFont">Meal name</p>
+    <div className="flex flex-col text-start">
+      <p className="text-2xl md:text-xl font-headerFont">Meal name</p>
       <input
         type="text"
         value={mealname}
         onChange={(e) => setMealname(e.target.value)}
-        className="shadow-md shadow-gray-400 rounded w-72 h-10 shrink my-3 border-black border-2 pl-2"
+        className="shadow-md shadow-gray-400 rounded w-72 h-10 shrink my-3  pl-2"
       ></input>
     </div>
   );
@@ -181,9 +267,9 @@ function FormIngredientsInput({
 
   return (
     <div className="flex flex-col lg:w-72 lg:my-5 items-center">
-      <table className="shadow-xl bg-none border-black border-2">
+      <table className="shadow-xl bg-none">
         <thead>
-          <tr className="font-buttonFont">
+          <tr className="font-headerFont">
             <th>Ingredient</th>
             <th>Amount (g)</th>
           </tr>

@@ -168,13 +168,13 @@ function EditMeal({ index, meals, setMeals, isAdded, setIsAdded }: MealProps) {
   }
   return (
     <form className="flex flex-row" onSubmit={(e) => handleMealUpdate(e)}>
-      <div className="flex flex-col">
+      <div className="flex flex-col mb-2">
         <p className="font-headerFont mb-2">Cals</p>
         <input
           type="text"
           value={calories}
           onChange={(e) => updateMacro(Number(e.target.value), "calories")}
-          className="w-20"
+          className="w-20 text-black border-r-[#161618] border-2"
         ></input>
       </div>
       <div>
@@ -183,7 +183,7 @@ function EditMeal({ index, meals, setMeals, isAdded, setIsAdded }: MealProps) {
           type="text"
           value={carbs}
           onChange={(e) => updateMacro(Number(e.target.value), "carbs")}
-          className="w-20"
+          className="w-20 text-black border-r-[#161618] border-2"
         ></input>
       </div>
       <div>
@@ -192,12 +192,14 @@ function EditMeal({ index, meals, setMeals, isAdded, setIsAdded }: MealProps) {
           type="text"
           value={protein}
           onChange={(e) => updateMacro(Number(e.target.value), "protein")}
-          className="w-20"
+          className="w-20 text-black border-r-[#161618] border-2"
         ></input>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col mx-2 my-[4px] font-headerFont">
         <button type="submit">Submit</button>
-        <button onClick={handleDeleteMeal}>Delete</button>
+        <button className="my-2" onClick={handleDeleteMeal}>
+          Delete
+        </button>
       </div>
     </form>
   );

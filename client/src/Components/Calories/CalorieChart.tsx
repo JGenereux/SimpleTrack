@@ -133,15 +133,15 @@ const LineChart = ({ isAdded }: isAddedProps) => {
     maintainAspectRatio: true,
   };
   return (
-    <div className="flex flex-col w-full h-full mx-auto items-center bg-white">
-      <div>
+    <div className="flex flex-col w-fit h-full mx-auto items-center bg-white">
+      <div className="mr-5">
         <Scatter
           data={data}
           options={options}
-          className="max-w-fit  md:w-[600px] md:h-[600px]"
+          className=" h-[200px] md:w-[400px] md:h-[400px]"
         />
       </div>
-      <div className="flex flex-row gap-5 mb-10 ">
+      <div className="flex flex-row gap-5 mb-5 my-5">
         <button
           className="border-black rounded border-2 h-4 w-4"
           onClick={() => setMacroChoice(1)}
