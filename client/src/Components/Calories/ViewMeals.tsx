@@ -70,7 +70,7 @@ function Meal({ index, meals, setMeals, isAdded, setIsAdded }: MealProps) {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <div className="flex flex-col w-80 h-fit rounded-lg my-1 bg-[#161618] text-white">
+    <div className="flex flex-col w-[300px] md:w-80 h-fit rounded-lg my-1 bg-[#161618] text-white ml-4 md:ml-0">
       <div className="flex flex-row justify-center items-center">
         <p className="ml-2 my-2 font-headerFont">Meal {index + 1}</p>
         <button
@@ -90,7 +90,7 @@ function Meal({ index, meals, setMeals, isAdded, setIsAdded }: MealProps) {
             setIsAdded={setIsAdded}
           />
         ) : (
-          <p className="font-headerFont mb-2">
+          <p className="font-headerFont md:text-base mb-2">
             Cals: {calories}, Carbs: {carbs}, Protein: {protein}{" "}
           </p>
         )}

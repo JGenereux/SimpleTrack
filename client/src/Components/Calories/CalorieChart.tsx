@@ -130,7 +130,7 @@ const LineChart = ({ isAdded }: isAddedProps) => {
         beginAtZero: true,
       },
     },
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
   };
   return (
     <div className="flex flex-col w-fit h-full mx-auto items-center bg-white">
@@ -138,7 +138,7 @@ const LineChart = ({ isAdded }: isAddedProps) => {
         <Scatter
           data={data}
           options={options}
-          className=" h-[200px] md:w-[400px] md:h-[400px]"
+          className=" h-[200px] w-[300px] md:h-[225px] md:w-[375px]"
         />
       </div>
       <div className="flex flex-row gap-5 mb-5 my-5">

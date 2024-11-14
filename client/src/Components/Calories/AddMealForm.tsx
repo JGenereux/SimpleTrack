@@ -13,7 +13,7 @@ export default function AddMeal({ isAdded, setIsAdded }: isAddedProps) {
   const [calorieGoal, setCalorieGoal] = useState<string>("");
 
   return (
-    <div className="flex flex-col md:flex-row shadow-xl rounded-lg  min-w-fit md:w-[400px] lg:w-[1000px] h-fit md:ml-[5%] my-10 md:my-[2%] bg-white">
+    <div className="flex flex-col md:flex-row shadow-xl rounded-lg  w-fit md:w-[400px] lg:w-[1000px] h-fit md:ml-[5%] my-3 md:my-[2%] mr-5 ml-5 bg-white">
       <div className="flex flex-col h-full w-full">
         <div className="h-1/2 md:h-full w-full md:w-full my-8 md:ml-5 lg:ml-0">
           <AddMealForm
@@ -23,7 +23,7 @@ export default function AddMeal({ isAdded, setIsAdded }: isAddedProps) {
           />
         </div>
       </div>
-      <div className="flex flex-col mr-5 h-1/2 md:h-full w-full md:w-full bg-transparent ">
+      <div className="flex flex-col mr-5 h-1/2 md:h-full m-fit md:w-full bg-transparent">
         <ViewMeals isAdded={isAdded} setIsAdded={setIsAdded} />
         <PercentageViewer calorieGoal={calorieGoal} />
         <CalorieChart isAdded={isAdded} />

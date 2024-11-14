@@ -35,7 +35,7 @@ export default function PercentageViewer({ calorieGoal }: calorieGoalProps) {
     calculatePercentToGoal();
   }, [calorieGoal, auth.userEmail]);
   return (
-    <div className="mb-10 my-5 mr-5">
+    <div className="mb-10 my-5 md:mr-5">
       <div className="flex justify-self-center md:justify-self-end  mb-1">
         <span className="text-sm font-medium dark:text-black">
           {percentage}%
