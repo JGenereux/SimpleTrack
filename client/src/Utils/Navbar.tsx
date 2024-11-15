@@ -6,7 +6,7 @@ import { useAuth } from "../Components/Provider/authProvider";
 export default function Navbar() {
   const [profileOpen, setProfileOpen] = useState<boolean>(false);
   return (
-    <div className="flex bg-blue-300 flex-col md:flex-row items-center min-w-fit min-h-fit md:min-h-12 font-mono z-50 relative">
+    <div className="flex bg-[#00ABE4] flex-col md:flex-row items-center min-w-fit min-h-fit md:min-h-12 font-mono z-50 relative">
       <h3 className="mx-3">SimpleTrack</h3>
       <Link to="/" className="mx-3">
         Home

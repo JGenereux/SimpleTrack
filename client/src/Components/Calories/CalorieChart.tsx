@@ -133,7 +133,7 @@ const LineChart = ({ isAdded }: isAddedProps) => {
     maintainAspectRatio: false,
   };
   return (
-    <div className="flex flex-col w-fit h-full mx-auto items-center bg-white">
+    <div className="flex flex-col w-fit h-full mx-auto md:mx-0 md:ml-auto md:mr-5 items-center bg-white">
       <div className="mr-5">
         <Scatter
           data={data}
@@ -143,14 +143,29 @@ const LineChart = ({ isAdded }: isAddedProps) => {
       </div>
       <div className="flex flex-row gap-5 mb-5 my-5">
         <button
+          style={
+            macroChoice === 1
+              ? { backgroundColor: "black" }
+              : { backgroundColor: "white" }
+          }
           className="border-black rounded border-2 h-4 w-4"
           onClick={() => setMacroChoice(1)}
         ></button>
         <button
+          style={
+            macroChoice === 2
+              ? { backgroundColor: "black" }
+              : { backgroundColor: "white" }
+          }
           className="border-black rounded border-2 h-4 w-4"
           onClick={() => setMacroChoice(2)}
         ></button>
         <button
+          style={
+            macroChoice === 3
+              ? { backgroundColor: "black" }
+              : { backgroundColor: "white" }
+          }
           className="border-black rounded border-2 h-4 w-4"
           onClick={() => setMacroChoice(3)}
         ></button>

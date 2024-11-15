@@ -13,7 +13,7 @@ export default function AddMeal({ isAdded, setIsAdded }: isAddedProps) {
   const [calorieGoal, setCalorieGoal] = useState<string>("");
 
   return (
-    <div className="flex flex-col md:flex-row shadow-xl rounded-lg  w-fit md:w-[400px] lg:w-[1000px] h-fit md:ml-[5%] my-3 md:my-[2%] mr-5 ml-5 bg-white">
+    <div className="flex flex-col md:flex-row shadow-[#0ffcbd50] shadow-lg rounded-lg  w-fit md:w-[400px] lg:w-[1000px] h-fit md:ml-[5%] my-3 md:my-[1%] mr-5 ml-5 ">
       <div className="flex flex-col h-full w-full">
         <div className="h-1/2 md:h-full w-full md:w-full my-8 md:ml-5 lg:ml-0">
           <AddMealForm
@@ -195,7 +195,7 @@ function Goal({ calorieGoal, setCalorieGoal }: calorieGoalProps) {
   return (
     <div className="flex flex-row ml-5 mb-2">
       <button
-        className="shadow-md p-1 bg-green-200 font-textFont"
+        className="shadow-md p-1 bg-black text-white font-textFont"
         onClick={handleSetGoalClick}
       >
         Set Daily Goal
@@ -227,13 +227,13 @@ function FormTextInput({ meal, setMeal }: mealInputProps) {
   }, [mealname]);
 
   return (
-    <div className="flex flex-col text-start">
+    <div className="flex flex-col text-start my-6">
       <p className="text-2xl md:text-xl font-headerFont">Meal name</p>
       <input
         type="text"
         value={mealname}
         onChange={(e) => setMealname(e.target.value)}
-        className="shadow-md shadow-gray-400 rounded w-72 h-10 shrink my-3  pl-2"
+        className="shadow-md shadow-gray-400 border-black border-[1px] rounded w-72 h-10 shrink my-3  pl-2"
       ></input>
     </div>
   );
@@ -266,8 +266,8 @@ function FormIngredientsInput({
   }, [ingredients]);
 
   return (
-    <div className="flex flex-col lg:w-72 lg:my-5 items-center">
-      <table className="shadow-xl bg-none">
+    <div className="flex flex-col lg:w-72  items-center">
+      <table className="shadow-md bg-none">
         <thead>
           <tr className="font-headerFont">
             <th>Ingredient</th>
@@ -290,7 +290,7 @@ function FormIngredientsInput({
       </table>
       <button
         type="submit"
-        className="h-12 w-32 rounded-lg shadow-gray-600 shadow-md mt-5 font-buttonFont"
+        className="h-12 w-32 rounded-lg text-white bg-black  shadow-md mt-5 font-buttonFont"
       >
         Get Macros!
       </button>
@@ -347,7 +347,7 @@ function IngredientsEntryRows({
       <td>
         <input
           type="text"
-          className="w-32 h-10 md:w-48 rounded mr-2 border-2 pl-2"
+          className="w-32 h-10 md:w-48 rounded mr-2 pl-2 border-black border-[1px]"
           value={ingredient}
           onChange={(e) => setIngredient(e.target.value)}
         ></input>
@@ -355,7 +355,7 @@ function IngredientsEntryRows({
       <td>
         <input
           type="text"
-          className="w-32 h-10 md:w-48 rounded mr-2 border-2 pl-2"
+          className="w-32 h-10 md:w-48 rounded mr-2 pl-2 border-black border-[1px]"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         ></input>
